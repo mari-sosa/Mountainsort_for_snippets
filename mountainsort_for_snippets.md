@@ -13,16 +13,18 @@ Concatenate the waveforms horizontally with zeros padded in between.
     * The rows must be the channels of the ntrode
     * Zeroes can be any length but should be at least as long as a snippet
     * The padding is important so that when Mountainsort detects events and makes its own clips, there will not be overlap between the waveforms of neighboring spikes!
-		* Convert this matrix to mda format using writemda()
+  * Convert this matrix to mda format using writemda()
 
 Next, make a vector of pseudo event times for Mountainsort to use as the peak timestamps of each event.
-    * Find the maximum amplitude across all channels per event.
-    * Find the column index of that peak on that channel.
-    * In other words, there will be 1 index per event, and this will correspond to the channel with the largest peak (even if the peaks on the other channels fall at slightly different indices). This should be a 1D vector of indices into your 2D matrix of snippets.
-    * To do all of this, look at Mari’s Matlab function [waves2mda](https://bitbucket.org/franklab/trodes2ff_shared/src/d360eaf7bce693cb37b8ad56a89c7d45406d63fa/waves2mda.m?at=develop&fileviewer=file-view-default) as an example.
-  * The following files should be created in a .mda directory:
-    * raw.nt<num>.mda - the mda of your snippets per ntrode
-    * event_times.nt<num>.mda - the indices of the peak for each event per ntrode
+  * For each event, find the peak amplitude across all channels of the ntrode.
+  * Then find the column index of that peak.
+  * In other words, there will be 1 index per event, and this will correspond to the channel with the largest peak (even if the peaks on the other channels fall at slightly different indices). This should be a 1D vector of indices into your 2D matrix of snippets.
+
+To do all of this, look at Mari’s Matlab function [waves2mda](https://bitbucket.org/franklab/trodes2ff_shared/src/d360eaf7bce693cb37b8ad56a89c7d45406d63fa/waves2mda.m?at=develop&fileviewer=file-view-default) as an example.
+
+The following files should be created in a .mda directory:
+  * raw.nt[num].mda - the mda of your snippets per ntrode (replace [num] with the ntrode number)
+  * event_times.nt[num].mda - the indices of the peak for each event per ntrode
 
 ## Run setup javascript
 Same as for continuous data - create datasets.txt, pipelines.txt, raw.mda.prv, and params.json. Run in the parent directory above the .mda directory.
