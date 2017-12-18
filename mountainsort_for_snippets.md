@@ -1,6 +1,6 @@
 # Running Mountainsort on spike snippets
 
-This is applicable if you have saved the filtered waveforms of your spikes (aka “snippets” aka “clips”), rather than continuously recorded broadband data.
+This is applicable if you have saved the filtered waveforms of your spikes (aka “snippets” aka “clips”), rather than continuously recorded broadband data. Note that these instructions are written for **Mountainsort2**.  
 
 ## Convert waveforms and event times to mda format
 
